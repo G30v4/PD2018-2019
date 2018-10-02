@@ -1,0 +1,29 @@
+tasks.withType(JavaCompile) {
+	options.encoding = "UTF-8"
+}
+
+apply plugin: 'java-library'
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+//Copiar las dependencias al directorio /libs
+task copyDependencies(type: Copy) {
+	delete 'libs'
+	from configurations.compile
+	into 'libs'
+}
+
+dependencies {
+//	compile group: 'org.apache.openejb', name: 'openejb-ejbd', version: '4.7.5'
+
+	compile('org.apache.tomee:openejb-ejbd:7.1.0')	
+	{
+  		exclude module: 'openjpa'
+	}
+}
+
+
+

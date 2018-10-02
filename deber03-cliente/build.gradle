@@ -1,0 +1,23 @@
+tasks.withType(JavaCompile) {
+	options.encoding = "UTF-8"
+}
+
+apply plugin: 'java-library'
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+task copyDependencies(type: Copy) {
+	delete 'libs'
+	from configurations.compile
+	into 'libs'
+}
+
+dependencies {
+//	compile group: 'org.apache.openejb', name: 'openejb-client', version: '4.7.5'
+	
+	compile('org.apache.tomee:openejb-client:7.1.0')	
+	
+}
