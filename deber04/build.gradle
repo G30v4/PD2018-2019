@@ -1,0 +1,22 @@
+tasks.withType(JavaCompile) {
+	options.encoding = "UTF-8"
+}
+
+apply plugin: 'java-library'
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+task copyDependencies(type: Copy) {
+	delete 'libs'
+	from configurations.compile
+	into 'libs'
+}
+
+dependencies {
+	compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '8.5.34'	
+	compile group: 'org.apache.tomcat', name: 'tomcat-jasper', version: '8.5.34'
+	compile group: 'org.apache.tomcat', name: 'tomcat-jasper-el', version: '8.5.34'
+}
