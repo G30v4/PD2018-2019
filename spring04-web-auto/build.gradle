@@ -1,0 +1,23 @@
+buildscript {
+  repositories {
+    jcenter()
+  }
+
+  dependencies {
+    classpath 'org.gretty:gretty:+'
+  }
+}
+
+apply plugin: 'war'
+apply plugin: 'org.gretty'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+	compile group: 'org.springframework', name: 'spring-context', version: '5.0.9.RELEASE'
+	compile group: 'org.springframework', name: 'spring-web', version: '5.0.9.RELEASE'
+	
+	compile group: 'javax.servlet.jsp', name: 'javax.servlet.jsp-api', version: '2.3.3'
+}
