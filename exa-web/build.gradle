@@ -1,0 +1,52 @@
+buildscript {
+  repositories {
+    jcenter()
+  }
+
+  dependencies {
+    classpath 'org.gretty:gretty:+'
+  }
+}
+
+plugins {
+	id 'net.ltgt.apt' version '0.10'
+}
+
+apply plugin: 'war'
+apply plugin: 'org.gretty'
+
+repositories {
+
+    jcenter()
+}
+
+dependencies {
+	compile group: 'javax.jms', name: 'javax.jms-api', version: '2.0.1'
+	compile group: 'org.apache.activemq', name: 'artemis-jms-client', version: '2.6.3'
+
+	compile group: 'org.springframework', name: 'spring-context', version: '5.0.9.RELEASE'
+	compile group: 'org.springframework', name: 'spring-web', version: '5.0.9.RELEASE'
+	compile group: 'org.springframework', name: 'spring-jms', version: '5.0.9.RELEASE'
+	
+	compile group: 'javax.servlet.jsp', name: 'javax.servlet.jsp-api', version: '2.3.3'
+	compile group: 'jstl', name: 'jstl', version: '1.2'
+	
+
+	compile group: 'org.apache.struts', name: 'struts2-core', version: '2.5.18'
+	compile group: 'org.apache.struts', name: 'struts2-convention-plugin', version: '2.5.18'
+	compile group: 'org.apache.struts', name: 'struts2-spring-plugin', version: '2.5.18'
+	
+	
+	// Soporte para LOMBOK: @Getter y @Setter
+	compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.1'
+	
+	compileOnly 'org.projectlombok:lombok:1.18.4'
+	
+	apt 'org.projectlombok:lombok:1.18.4'
+}
+
+gretty {
+  httpPort = 8080
+}
+
+
